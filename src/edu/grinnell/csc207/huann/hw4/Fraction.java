@@ -120,7 +120,7 @@ public class Fraction {
 	// +-----------------+
 
 	/**
-	 * Make sure the denominator is positive. If the number is 
+	 * Make sure the denominator is positive. If the number is supposed to be negative, make the numerator negative
 	 */
 	
 	private void cleanup() {
@@ -133,7 +133,7 @@ public class Fraction {
 	
 
 	/**
-	 * 
+	 * Reduces the fraction to its simplest form
 	 */
 	private void simplify() {
 		BigInteger commonDenom = this.numerator.gcd(this.denominator);
@@ -195,6 +195,10 @@ public class Fraction {
 		}
 	} // subtract(Fraction)
 
+	/***
+	 * Multiply a fraction with this fraction
+	 */
+	
 	public Fraction multiply(Fraction multiplier) {
 		BigInteger resultNumerator;
 		BigInteger resultDenominator;
@@ -209,6 +213,10 @@ public class Fraction {
 		}
 	}
 
+	/***
+	 * Divide this fraction by another fraction
+	 */
+	
 	public Fraction divide(Fraction divisor) throws Exception {
 		// Fraction inverse = new Fraction(divisor.denominator,
 		// divisor.numerator);
@@ -230,12 +238,16 @@ public class Fraction {
 		}
 	}
 
+	/***
+	 * Change a whole number into a fraction
+	 */
+	
 	public Fraction fractint(BigInteger val) {
 		val = this.numerator;
 		this.denominator = BigInteger.valueOf(1);
 		return this;
 	}
-
+	
 	/**
 	 * Approximate this fraction as a double.
 	 */
