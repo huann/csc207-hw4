@@ -5,57 +5,64 @@ import java.io.PrintWriter;
 import java.math.BigInteger;
 
 public class Calculator {
-	
-	static String[] r = new String[8];
-	
-	
+
+	//static String[] r = new String[8];
+
 	public static Fraction evaluate(String expression) throws Exception {
-		//use the spaces in the expression as a separator
+		// use the spaces in the expression as a separator
 		String[] arrExpr = expression.split(" ");
-		//take the first number as temporary answer
-		Fraction ans = new Fraction(BigInteger.valueOf(1), BigInteger.valueOf(1));
-		ans = ans.toFraction(arrExpr[0]);
+		// take the first number as temporary answer
+		Fraction ans = new Fraction(BigInteger.valueOf(1),
+				BigInteger.valueOf(1));
+		String[] r = new String[8];
+
+		if (arrExpr[1].equals("=")) {
+			r[(int) arrExpr[0].charAt(1)] = arrExpr[2];
+			return ans;
+		}
+		ans = new Fraction(arrExpr[0]);
+
 		for (int i = 1; i < arrExpr.length; i++) {
-			if (arrExpr[i].equals("=")) {
-				r[arrExpr[i-1].charAt(1)] = arrExpr[i+1];
-			} //if storage
-			if (arrExpr[i-1].charAt(0)=='r') {
-				arrExpr[i-1] = r[arrExpr[i-1].charAt(1)];
-			} //if
+			if (arrExpr[i - 1].charAt(0) == 'r') {
+				arrExpr[i - 1] = r[arrExpr[i - 1].charAt(1)];
+			} // if
 			if (arrExpr[i].equals("+")) {
-				ans = ans.add(ans.toFraction(arrExpr[i+1]));
-			} //if addition
+				ans = ans.add(new Fraction(arrExpr[i + 1]));
+			} // if addition
 			if (arrExpr[i].equals("-")) {
-				ans = ans.subtract(ans.toFraction(arrExpr[i+1]));
-			} //if subtraction
+				ans = ans.subtract(new Fraction(arrExpr[i + 1]));
+			} // if subtraction
 			if (arrExpr[i].equals("*")) {
-				ans = ans.multiply(ans.toFraction(arrExpr[i+1]));
-			} //if multiplication
+				ans = ans.multiply(new Fraction(arrExpr[i + 1]));
+			} // if multiplication
 			if (arrExpr[i].equals("/")) {
-				ans = ans.divide(ans.toFraction(arrExpr[i+1]));
-			} //if division
+				ans = ans.divide(new Fraction(arrExpr[i + 1]));
+			} // if division
 
-
-		} //for
+		} // for
 		return ans;
-	} //eva1uate(string)
-	
-	
-	public static Fraction evaluate(String[] expression) {
-		return null;
-	} //eva1uate(string [])
-	
-	
-	public static void main () throws IOException {
+	} // eva1uate(string)
+
+	public static Fraction[] evaluate(String[] expression) throws Exception {
+		Fraction[] ans = new Fraction[expression.length];
+		for (int i = 0; i < expression.length; i++) {
+			ans[i] = evaluate(expression[i]);
+		}
+		return ans;
+	} // eva1uate(string [])
+
+	public static void main(String[] args) throws Exception {
 		PrintWriter pen = new PrintWriter(System.out, true);
 		java.io.BufferedReader eyes;
 		java.io.InputStreamReader istream;
 		istream = new java.io.InputStreamReader(System.in);
 		eyes = new java.io.BufferedReader(istream);
-		pen.println("Hello");
-		pen.println(eyes.readLine());
-		System.out.println("Hello");
+		pen.println("What would you like calculated?\nType 'quit' to exit calculator.");
+		while (eyes.readLine() != "quit") {
+			pen.println(Calculator.evaluate(eyes.readLine()));
+			pen.println("Calculation complete.");
+		}
+		pen.println("Have a nice day!");
 	}
 
 }
-
