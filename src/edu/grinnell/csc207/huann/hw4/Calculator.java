@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.math.BigInteger;
 
 /**
- * A simple implementation of fractions.
+ * A fraction calculator.
  * 
  * @author Samuel A. Rebelsky
  * @author Ann Hu
@@ -13,7 +13,6 @@ import java.math.BigInteger;
  * @author CSC207 2013F
  * @version 0.1 of September 2013
  */
-
 public class Calculator {
 	
 	    // +------------------+---------------------------------------------
@@ -27,17 +26,15 @@ public class Calculator {
 		 * 
 		 */
 
-
 	// static String[] r = new String[8];
 	static Fraction[] r = new Fraction[8];
 
 	public static Fraction evaluate(String expression) throws Exception {
 		// use the spaces in the expression as a separator
 		String[] arrExpr = expression.split(" ");
-		// take the first number as temporary answer
+		// create a new fraction to store the answer
 		Fraction ans = new Fraction(BigInteger.valueOf(1),
 				BigInteger.valueOf(1));
-		
 		
 		if (arrExpr.length == 1) {
 			ans = new Fraction(rCheck(arrExpr[0]));
@@ -74,7 +71,7 @@ public class Calculator {
 		Fraction[] ans = new Fraction[expression.length];
 		for (int i = 0; i < expression.length; i++) {
 			ans[i] = evaluate(expression[i]);
-		}
+		} //for
 		return ans;
 	} // eva1uate(string [])
 
@@ -84,9 +81,9 @@ public class Calculator {
 			return (r[arrExpr.charAt(1)]).toString();
 		} else
 			return arrExpr;
-
 	}
 
+	//main method acts as user interface
 	public static void main(String[] args) throws Exception {
 		PrintWriter pen = new PrintWriter(System.out, true);
 		java.io.BufferedReader eyes;
@@ -98,14 +95,13 @@ public class Calculator {
 		while (true) {
 			while ((response = eyes.readLine()).equals("quit")) {
 				System.exit(0);
-			}
+			} //while
 			try {
 				pen.println(Calculator.evaluate(rCheck(response)));
 				pen.println("Calculation complete.");
 			} catch (Exception e) {
 				pen.println("Sorry, that is not valid input. Please try again.");
 			}
-		}
-	}
-
-}
+		} //while
+	} //main
+} //class Calculator
