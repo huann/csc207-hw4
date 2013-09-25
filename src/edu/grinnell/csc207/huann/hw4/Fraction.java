@@ -84,14 +84,22 @@ public class Fraction {
 			this.denominator = new BigInteger(fracParts[1]);
 		this.simplify();
 	} // Fraction(String)
-	
+    
+    /**
+     * Create a new fraction equivalent to a BigInteger.
+     */
+    public Fraction(BigInteger n) {
+            this.numerator = n;
+            this.denominator = BigInteger.valueOf(1);
+    } // Fraction(BigInteger)
+    
     /**
      * Create a new fraction equivalent to an integer.
      */
-    public Fraction(int num) {
-            this.numerator = BigInteger.valueOf(num);
-            this.denominator = BigInteger.ONE;
-    }
+    public Fraction(int n) {
+            this.numerator = BigInteger.valueOf(n);
+            this.denominator = BigInteger.valueOf(1);
+    } // Fraction(int)
 
 	// +-------------------------+--------------------------------------
 	// | Standard Object Methods |
@@ -131,6 +139,20 @@ public class Fraction {
 	public int hashCode() {
 		return numerator.hashCode() * denominator.hashCode();
 	} // hashCode()
+	
+	/**
+	 * Clones a fraction. 
+	 */
+	public Fraction clone() {
+		return null;
+	} // clone()
+	
+	/**
+	 * Compares this fraction to another fraction. 
+	 */
+	public int compareTo(Fraction other) {
+		return 0;
+	} // compareTo()
 
 	// +-----------------+----------------------------------------------
 	// | Private Methods |
@@ -251,15 +273,6 @@ public class Fraction {
 			return this;
 		}
 	} // divide(Fraction)
-
-	/***
-	 * Change a whole number into a fraction.
-	 */
-	public Fraction fractInt(BigInteger val) {
-		val = this.numerator;
-		this.denominator = BigInteger.valueOf(1);
-		return this;
-	} // fractInt(BigInteger)
 	
 	/**
 	 * Approximate this fraction as a double.
