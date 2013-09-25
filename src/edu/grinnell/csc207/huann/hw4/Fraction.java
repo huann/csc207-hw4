@@ -27,6 +27,8 @@ public class Fraction {
 	 * negative numerator, it is negative.
 	 * 
 	 * Fractions are stored in simplified form.
+	 * 
+	 * This fraction class is compatible with BigIntegers, ints, and Strings. 
 	 */
 
 	private static BigInteger NEGATIVE_ONE = BigInteger.valueOf(-1);
@@ -144,14 +146,26 @@ public class Fraction {
 	 * Clones a fraction. 
 	 */
 	public Fraction clone() {
+		try {
+			return new Fraction(this.numerator, this.denominator);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	} // clone()
 	
 	/**
 	 * Compares this fraction to another fraction. 
+	 * Returns 1 if equal, 0 if not.
 	 */
 	public int compareTo(Fraction other) {
-		return 0;
+		if (this.equals(other)) {
+			return 1;
+		} //if
+		else {
+			return 0;
+		} //else
 	} // compareTo()
 
 	// +-----------------+----------------------------------------------
@@ -273,13 +287,47 @@ public class Fraction {
 			return this;
 		}
 	} // divide(Fraction)
-	
+
 	/**
 	 * Approximate this fraction as a double.
 	 */
 	public double doubleValue() {
 		return this.numerator.doubleValue() / this.denominator.doubleValue();
 	} // doubleValue()
+	
+	/**
+	 * Returns the reciprocal of this fraction. 
+	 */
+	public Fraction reciprocal() throws Exception {
+		BigInteger newNumerator;
+		BigInteger newDenominator;
+		newNumerator = this.denominator;
+		newDenominator = this.numerator;
+		Fraction result = new Fraction(newNumerator, newDenominator);
+		return result;
+	} // reciprocal()
+	
+	/**
+	 * Returns the negation of this fraction.
+	 */
+	public Fraction negate() {
+		return this.multiply(new Fraction(-1,1));
+	} // negate()
+	
+	/**
+	 * Returns numerator.
+	 */
+	public BigInteger numerator() {
+		return this.numerator;
+	} // numerator()
+
+	/**
+	 * Returns denominator.
+	 */
+	public BigInteger denominator() {
+		return this.denominator;
+	} // denominator()
+	
 
 	public static void main(String[] args) {
 		Fraction a = new Fraction(1, 2);
