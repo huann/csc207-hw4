@@ -30,7 +30,7 @@ public class Calculator {
 	static Fraction[] r = new Fraction[8];
 
 	/**
-	 * Takes a string expression and evaluates it into a fraction.
+	 * Takes a string expression and evaluates it as a fraction.
 	 */
 	public static Fraction evaluate(String expression) throws Exception {
 		// use the spaces in the expression as a separator
@@ -71,7 +71,7 @@ public class Calculator {
 	}
 
 	/**
-	 * Takes an array of string expressions and evaluates them into a fraction array.
+	 * Takes an array of string expressions and evaluates them as a fraction array.
 	 */
 	public static Fraction[] evaluate(String[] expression) throws Exception {
 		Fraction[] ans = new Fraction[expression.length];
