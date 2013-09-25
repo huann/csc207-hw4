@@ -328,12 +328,4 @@ public class Fraction {
 		return this.denominator;
 	} // denominator()
 	
-
-	public static void main(String[] args) {
-		Fraction a = new Fraction(1, 2);
-		Fraction b = a.add(new Fraction(1, 2));
-		System.out.print("a is " + a);
-		System.out.print("b is" + b);
-	} // main
-	
 } // class Fraction
