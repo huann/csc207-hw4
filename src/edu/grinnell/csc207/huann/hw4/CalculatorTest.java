@@ -16,6 +16,7 @@ public class CalculatorTest {
 		assertEquals("20/1", Calculator.evaluate("10/1 * 4/2").toString());
 		assertEquals("10/1", Calculator.evaluate("10 / 2/2").toString());
 		assertEquals("10/1", Calculator.evaluate("10 / 2/1 + 18/3 - 24/4 * 2").toString());
+		assertEquals("10/1", Calculator.evaluate("10 / 2/1 + 18/3 - 24/4 * 2").toString());
 		//assertEquals(answer, Calculator.evaluate(hat));
 		//assertEquals("1/1", Calculator.evaluate("r1 = 10").toString());
 	}

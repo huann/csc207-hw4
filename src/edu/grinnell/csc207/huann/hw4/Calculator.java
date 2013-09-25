@@ -29,6 +29,9 @@ public class Calculator {
 	// static String[] r = new String[8];
 	static Fraction[] r = new Fraction[8];
 
+	/**
+	 * Takes a string expression and evaluates it into a fraction.
+	 */
 	public static Fraction evaluate(String expression) throws Exception {
 		// use the spaces in the expression as a separator
 		String[] arrExpr = expression.split(" ");
@@ -67,6 +70,9 @@ public class Calculator {
 		} // eva1uate(string)
 	}
 
+	/**
+	 * Takes an array of string expressions and evaluates them into a fraction array.
+	 */
 	public static Fraction[] evaluate(String[] expression) throws Exception {
 		Fraction[] ans = new Fraction[expression.length];
 		for (int i = 0; i < expression.length; i++) {
