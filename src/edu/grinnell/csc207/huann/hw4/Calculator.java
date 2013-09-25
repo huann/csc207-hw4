@@ -83,7 +83,9 @@ public class Calculator {
 			return arrExpr;
 	}
 
-	//main method acts as user interface
+	/**
+	 * Main method acts as user interface.
+	 */
 	public static void main(String[] args) throws Exception {
 		PrintWriter pen = new PrintWriter(System.out, true);
 		java.io.BufferedReader eyes;
@@ -95,13 +97,13 @@ public class Calculator {
 		while (true) {
 			while ((response = eyes.readLine()).equals("quit")) {
 				System.exit(0);
-			} //while
+			} //while quit
 			try {
 				pen.println(Calculator.evaluate(rCheck(response)));
 				pen.println("Calculation complete.");
 			} catch (Exception e) {
 				pen.println("Sorry, that is not valid input. Please try again.");
 			}
-		} //while
+		} //while the calculator is running
 	} //main
 } //class Calculator
